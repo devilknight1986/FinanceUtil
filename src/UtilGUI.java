@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 /**
@@ -11,14 +12,35 @@ public class UtilGUI {
     private int screenHeight;
     private int screenWidth;
 
-    private JTextArea srcExelArea;
+    private JPanel northPanel;
+    private JLabel srcExcelLabel;
+    private JTextArea srcExcelArea;
+    private JLabel filterExcelLabel;
+    private JTextArea filterExcelArea;
 
     public UtilGUI() {
         setUpGuiPositon();
         mainFrame.setVisible(true);
 
-        srcExelArea = new JTextArea();
-        mainFrame.add(srcExelArea, BorderLayout.NORTH);
+        northPanel = new JPanel();
+        northPanel.setLayout(new GridLayout(2, 2));
+        northPanel.setBackground(Color.pink);
+
+        srcExcelLabel = new JLabel("Source Excel File Absolute Destination: ");
+        srcExcelLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        northPanel.add(srcExcelLabel);
+        srcExcelArea = new JTextArea();
+        srcExcelArea.setBorder(BorderFactory.createLineBorder(Color.red));
+        northPanel.add(srcExcelArea);
+
+        filterExcelLabel = new JLabel("Filter Excel File Absolute Destination: ");
+        filterExcelLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        northPanel.add(filterExcelLabel);
+        filterExcelArea = new JTextArea();
+        filterExcelArea.setBorder(BorderFactory.createLineBorder(Color.red));
+        northPanel.add(filterExcelArea);
+
+        mainFrame.add(northPanel, BorderLayout.NORTH);
     }
 
     private void setUpGuiPositon() {
